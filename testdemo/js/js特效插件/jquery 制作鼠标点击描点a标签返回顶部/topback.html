@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>jquery 制作鼠标点击描点a标签返回顶部</title>
+</head>
+
+<body>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			border: 0;
+		}
+
+		#retop {
+			position: fixed;
+			bottom: 10%;
+			left: 0;
+			/* position: absolute; */
+			width: 25px;
+			height: 69px;
+			background: url('./images/topback.png') no-repeat;
+			text-indent: -9em;
+			overflow: hidden;
+			display: none;
+
+		}
+	</style>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('<a href="#" id="retop">返回顶部</a>')
+			.appendTo('body')
+			.fadeOut()
+			.click(function () {
+				$(document).scrollTop(0);
+				$(this).fadeOut();
+				return false
+			});
+			var $retop = $('#retop');
+
+			function backTopLeft() {
+				var btLeft = $(window).width() / 2 + 478;
+				if (btLeft <= 950) {
+					$retop.css({
+						'left': 955
+					})
+				} else {
+					$retop.css({
+						'left': btLeft
+					})
+				}
+			}
+			backTopLeft();
+			$(window).resize(backTopLeft);
+			$(window).scroll(function () {
+				if ($(document).scrollTop() === 0) {
+					$retop.fadeOut()
+				} else {
+					$retop.fadeIn()
+				}
+
+			});
+		});
+	</script>
+
+	<div style="height:2000px;">1111</div>
+
+</body>
+
+</html>

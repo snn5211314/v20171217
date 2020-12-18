@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cube</title>
+  <style>
+    img{
+      width: 200px;
+      height: 200px;
+    }
+    #box{
+      perspective: 800px;
+      transform-style: preserve-3d;
+      transition: 5s infinite;
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+    .cube_box{
+      width: 200px;
+      height: 200px;
+      margin: 100px auto;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: 5s;
+      transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    .cube_box:hover{
+      transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+    .cube{
+      width: 200px;
+      height: 200px;
+      text-align: center;
+      line-height: 200px;
+      position: absolute;
+
+    }
+    /*原来这六个面的div是叠加在一起的通过旋转 移动来让他们形成正方体*/
+    .left{
+      transform:rotateY(90deg) translateZ(-100px);
+    }
+    .right{
+      transform:rotateY(90deg) translateZ(100px);
+    }
+    .top{
+      transform:rotateX(90deg) translateZ(100px);
+    }
+    .buttom{
+      transform:rotateX(90deg) translateZ(-100px);
+    }
+    .back{
+      transform:rotateX(0deg) translateZ(-100px);
+    }
+    .front{
+      transform:rotateX(0deg) translateZ(100px);
+    }
+  </style>
+</head>
+<body style="background-color:#23d19d">
+  <div id="box">
+    <div class="cube_box" id="cube_box">
+      <div class="cube front"><img src="../images/img1.jpg"></div>
+      <div class="cube back"><img src="../images/img2.jpg"></div>
+      <div class="cube left"><img src="../images/img3.jpg"></div>
+      <div class="cube right"><img src="../images/img4.jpg"></div>
+      <div class="cube top"><img src="../images/img5.jpg"></div>
+      <div class="cube buttom"><img src="../images/img6.jpg"></div>
+    </div>
+  </div>
+  <!-- <script type="text/javascript"src="js/index02.js"></script> -->
+</body>  
+</html>

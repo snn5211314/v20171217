@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>transition</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      border: solid 30px gray;
+      background: yellow;
+      /* transition:border-color .5s ease-in .1s, background-color .5s ease-in .1s, color .5s ease-in .1s; */
+      transition: all .5s cubic-bezier(.17,.67,.97,-0.73) .1s;
+    }
+    .box:hover {
+      border: dotted 40px #000;
+      background: blue;
+      color: yellowgreen;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    福
+  </div>
+</body>
+</html>

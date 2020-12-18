@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jquery文字动画插件制作文字flash动画滤镜效果切换特效</title>
+<meta name="description" content="jquery文字动画插件制作文字内容flash动画效果类似滤镜轮播特效,自动轮播文字交替切换显示效果。jquery文字滚动,jquery下载。" />
+</head>
+
+<body>
+
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+.demo{width:700px;margin:50px auto;}
+#flashtext{font-size:40px;width:700px;height:270px;margin-top:50px;border:1px solid red;font-family:"微软雅黑";}
+</style>
+
+<div class="demo">
+	<h2>jquery插件打造漂亮文字动画效果</h2>  
+	<div id="flashtext"></div>
+</div>
+
+<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="js/textualizer.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	var list = ['当时气喘力竭，全身血污，自忖如去投店，必定引人疑心，还是回到李家换衣洗净之后再行离去，哪知李沅芷清晨已在书房。等李沅芷退出，他一倒上床，胸口奇痛，竟自昏了过去。'
+		, '经过两个多月的调养，仗着他内功精纯，再加李沅芷央求父亲聘请名医，购买良药，内伤终于治好了。这两个多月中李沅芷妥为护侍，尽心竭力。'
+		, '李沅芷大喜，跪下来恭恭敬敬的叩了八个头，她跟陆菲青读书学文，本已拜过师，这时是二次拜师。'
+		, '再过两年多，陆菲青把柔云剑术和芙蓉金针也都教会了她。这五年之中，李沅芷把金针、剑术、轻功、拳技，都学了个全，所差的就是火候未到，经验不足。'];
+
+	var txt = $('#flashtext');
+
+	var options = {
+		duration: 2500,          // 每段句子在页面中的停留时间(ms)
+		rearrangeDuration: 1000, // 单词切换间隔时间(ms)
+		effect: 'random'         // 显示的动画效果：random, fadeIn, slideLeft, slideTop
+	}
+
+	txt.textualizer(list,options);
+	txt.textualizer('start');
+})
+</script>
+</body>
+</html>

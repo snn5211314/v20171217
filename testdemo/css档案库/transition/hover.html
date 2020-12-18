@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			figure{
+				width: 295px;
+				height: 246px;
+				border:1px solid #cccccc;
+				position: relative;
+			}
+			
+			figure img{
+				width: 285px;
+				height:236px;
+				position: absolute;
+				left:5px;
+				top:5px;
+				transition: all 0.3s;
+			}
+			figure h3{
+				position: absolute;
+				top:50px;
+				left:30%;
+				text-align: center;
+				transition: all 0.3s;	
+				opacity: 0;		
+			}
+			figure span{
+				position: absolute;
+				top:90px;
+				left:30%;
+				text-align: center;
+				transition: all 0.3s;	
+				opacity: 0;		
+			}
+			figure a{
+				position: absolute;
+				bottom:50px;
+				left:30%;
+				text-align: center;
+				transition: all 0.3s;
+				opacity: 0;			
+			}
+			figure:hover h3{
+				transform: translateY(-30px);
+				opacity: 1;
+				z-index: 99;			
+			}
+			figure:hover span{
+				opacity: 1;
+				transform: translateY(-30px);
+				z-index: 99;			
+			}
+			figure:hover a{
+				opacity: 1;
+				transform: translateY(30px);
+				z-index: 99;			
+			}
+			figure:hover img{
+				width: 140px;
+				height:115px;
+				position: absolute;
+				left:75px;
+				top:75px;
+				transition: all 0.3s;
+			}
+			.btn {
+			  border: 1px solid #ff0000;
+			  background-color: #ff0000;
+			  text-align: center;
+			  color: #ffffff;
+			  padding: 5px 15px;
+			}
+			.btn:hover {
+			  border-color: #ff3333;
+			  background-color: #ff3d3d;
+			  text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<figure>
+			<img src="img/image01.jpg" />
+			<figcaption>
+				<h3>Web Design</h3>
+			      <span>Rasty James</span> 
+			      <a href="#" class="button">
+			     	 <button class="btn ">Take a Look</button>
+			      </a> 
+			</figcaption>
+		</figure>
+	</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>购物车</title>
+  <!-- 引入开发版本的vuejs -->
+  <script src="./lib/vue.js"></script>
+  <style>
+    .active {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <!-- 宿主元素 -->
+  <div id="app">
+    <h2 :title="title">
+      <!-- 插值文本 -->
+      {{title}}
+    </h2>
+
+    <!-- 用户输入 -->
+    <p>
+      <input type="text" v-model="course" v-on:keydown.enter="addCourse">
+      <button @click="addCourse">添加</button>
+    </p>
+
+    <!-- 条件渲染 -->
+    <div v-if="courses.length === 0">没有添加课程</div>
+
+    <!-- 列表展示 -->
+    <!-- class -->
+    <!-- <div v-for="c in courses" :key="c" :class="{active: selectedCourse === c}" @click="selectedCourse = c">
+      {{c}}
+    </div> -->
+    <!-- style -->
+    <div v-else>
+      <div v-for="c in courses"
+          :key="c"
+          :style="{backgroundColor: selectedCourse === c ? '#ddd' : 'transparent'}"
+          @click="selectedCourse = c">
+        {{c}}
+      </div>
+    </div>
+
+    <!-- 商品总数 -->
+    <p>
+      <!-- 表达式 -->
+      <!-- 课程总数： {{courses.length}} 门 -->
+      <!-- 计算属性 -->
+      <!-- 课程总数： {{total}} 门 -->
+      <!-- 侦听器 -->
+      课程总数： {{totalCount}} 门
+    </p>
+  </div>
+  
+  <script>
+
+    // 模拟请求数据
+    function getCourses() {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve( ['web全栈', 'web高级'])
+        }, 2000)
+      })
+    }
+
+    // 创建Vue实例
+    const app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          title: '开课吧购物车',
+          course: '',
+          selectedCourse: '',
+          courses: [],
+          totalCount: 0
+        }
+      },
+      async created () {
+        // vue实例创建，可以正常访问自己的数据和父组件传递下来的数据，但是因为没有挂载，所以不能访问dom元素
+        const courses = await getCourses()
+        this.courses = courses
+      },
+      mounted () {
+        
+      },
+      computed: {
+        total() { 
+          // 计算属性有缓存性，如果值没有发生变化，则页面不会重新渲染
+          return this.courses.length 
+        }
+      },
+      // 默认情况下watch不执行，
+      // watch: {
+      //   courses(newValue, oldValue) {
+      //     this.totalCount = newValue.length
+      //   }
+      // },
+      watch: {
+        courses: {
+          immediate: true, // 默认是执行
+          deep: true,
+          handler(newValue, oldValue) {
+            this.totalCount = newValue.length
+          }
+        }
+      },
+      methods: {
+        addCourse() {
+          // 1. 将输入的课程添加到courses中
+          this.courses.push(this.course)
+          // 2. 将用户输入清空
+          this.course = ''
+        }
+      },
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+*{
+	/* A universal page reset */
+	margin:0;
+	padding:0;
+}
+
+body{
+	/* Setting default text color, background and a font stack */
+	font-size:14px;
+	color:#ccc;
+	background-color:#141414;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+#neonText span{
+	width:700px;
+	height:150px;
+	position:absolute;
+	left:0;
+	top:0;
+	
+	background:url('img/text.jpg') no-repeat left top;
+}
+
+span#version1{
+	z-index:100;
+}
+
+span#version2{
+	background-position:left bottom;
+	z-index:99;
+}
+
+
+#neonText{
+	height:150px;
+	margin:180px auto 0;
+	position:relative;
+	width:650px;
+	text-indent:-9999px;
+}

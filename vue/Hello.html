@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 引入开发版本的vuejs -->
+  <script src="./lib/vue.js"></script>
+</head>
+<body>
+  <!-- 宿主元素 -->
+  <div id="app">
+    {{msg}}
+  </div>
+  
+  <script>
+    // 创建Vue实例
+    const app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          msg: 'Hello vue'
+        }
+      }
+    })
+
+    setTimeout(() => {
+      app.msg = 'mua~ vue'
+    }, 2000)
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jquery smartFloat插件制作仿产品列表页默认排序搜索框</title>
+</head>
+
+<body>
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+.pagedemo{width:760px;margin:0 auto;}
+#nav_left_layout{position:absolute;height:30px;width:760px;background:#dedede;}
+</style>
+
+<div class="pagedemo">
+		
+		<div style="height:100px;background:#eee;"></div>
+		
+		<div id="nav_left_layout"><a title="仿淘宝默认排序搜索框" href="http://www.jsfoot.com/"><img src="images/searchbox.gif" width="760" height="30" alt="仿淘宝默认排序搜索框" /></a></div>
+		
+		<div style="height:900px;overflow:hidden;"></div>
+
+</div>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript"> 
+$.fn.smartFloat = function() {
+	var position = function(element) {
+		var top = element.position().top, pos = element.css("position");
+		$(window).scroll(function() {
+			var scrolls = $(this).scrollTop();
+			if (scrolls > top) {
+				if (window.XMLHttpRequest) {
+					element.css({
+						position: "fixed",
+						top: 0
+					});	
+				} else {
+					element.css({
+						top: scrolls
+					});	
+				}
+			}else {
+				element.css({
+					position: pos,
+					top: top
+				});	
+			}
+		});
+};
+	return $(this).each(function() {
+		position($(this));						 
+	});
+};
+//绑定
+$("#nav_left_layout").smartFloat();
+</script>
+</body>
+</html>
