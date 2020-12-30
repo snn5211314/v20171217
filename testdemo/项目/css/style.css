@@ -1,0 +1,112 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-container{
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    /* 设置内部元素居中显示 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button-1{
+    background: #f4543c;
+    padding: 10px;
+    /* padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px; */
+    color: #fff;
+    width: 160px;
+    margin: 0 auto;
+    border-radius: 30px;
+}
+.title-1{
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+
+
+/* 第一页的样式 */
+.p1{
+    width: 150px;
+}
+
+
+
+
+
+
+
+/* 设置翻页箭头的样式 */
+#nextbtn{
+    position: absolute;
+    width: 30px;
+    bottom: 20px;
+    /* border: solid 1px red; */
+    z-index: 10;
+    left: 50%;
+    margin-left: -15px;
+    animation:  slideToUp 1s linear infinite;
+}
+#nextbtn img{
+    width: 30px;
+}
+/* 定义关键帧动画 */
+@keyframes slideToUp{
+    0%{
+        transform: translateY(30px);
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 0;
+    }
+}
+
+/* 音乐图标的样式 */
+
+/* 音乐图标 */
+#music_icon{
+    width: 30px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    /* background-color: red; */
+  }
+  
+  .icon-ani{
+    -webkit-animation:icon-rotate 3s linear infinite;
+   
+  }
+  .icon-ani-pause{
+      animation-play-state: paused;
+  }
+  
+  @-webkit-keyframes icon-rotate{
+   
+    0%{-webkit-transform:rotate(0deg);}
+  
+    25%{-webkit-transform:rotate(90deg);}
+  
+    50%{-webkit-transform:rotate(180deg);}
+  
+    75%{-webkit-transform:rotate(270deg);}
+  
+    100%{-webkit-transform:rotate(360deg);}
+  }
