@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>MVVM原理</title>
+	</head>
+	<body>
+		<script src="./entry/MVVM.js"></script>
+		<div id="app">
+			<input type="text" v-model="schoole.name">
+			<div>{{schoole.name}}和{{schoole.age}}</div>
+			<div>{{schoole.age}}</div>
+			<div v-html="message"></div>
+			<div v-text="message"></div>
+			{{getNewName}}
+			<!-- <button v-on:click=""></button> -->
+		</div>
+		<script type="text/javascript">
+			const vm = new MVVM({
+				el: '#app',
+				data() {
+					return {
+						schoole: {
+							name: 'zf',
+							age: 18
+						},
+						message: '<h1>Hello MVVM</h1>'
+					}
+				},
+				computed: {
+					getNewName() {
+						return this.schoole.name + '----架构';
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
