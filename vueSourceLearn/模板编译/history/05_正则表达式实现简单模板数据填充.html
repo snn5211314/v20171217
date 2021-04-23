@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <script>
+      var templateStr = '<h1>我买了一个{{name}}, 花了{{money}}元，我好{{mood}}</h1>'
+
+      var data = {
+        name: '华为手机',
+        money: 12999,
+        mood: '开心'
+      }
+      // repalce 如果没有分组，那么只会接受三个参数， 第一个是匹配到的字符 第二个是索引 第三个是源字符串
+      // 如果有分组,那么会接受四个参数，第一个是匹配到的字符 第二个参数是捕获的变量 第三个是索引 第四个是源字符串
+      // let result = templateStr.replace(/\{\{(\w+)\}\}/g, function (a, b, c, d) {
+      //   return data[b]
+      // })
+      // console.log(result)
+
+      // 封装成方法
+      function render (template, data) {
+        return template.replace(/\{\{(\w+)\}\}/g, function (findStr, $1) {
+          return data[$1]
+        })
+      }
+
+      let result = render(templateStr, data)
+      console.log(result)
+    </script>
+</body>
+</html>
