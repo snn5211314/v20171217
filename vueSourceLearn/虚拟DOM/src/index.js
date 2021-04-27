@@ -34,7 +34,10 @@ var myVnode = h('ul', {}, [
 // ])
 
 var myVnode1 = h('ul', {}, [
+  h('li', {key: 'm'}, 'M'),
   h('li', {key: 'A'}, 'A'),
+  h('li', {key: 'B'}, 'B'),
+  h('li', {key: 'C'}, 'C'),
   h('li', {key: 'D'}, 'D'),
   h('li', {key: 'E'}, 'E')
 ])

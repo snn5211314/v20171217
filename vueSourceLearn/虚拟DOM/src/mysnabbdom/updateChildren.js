@@ -39,6 +39,7 @@ export default function updateChildren(parentNode, oldCh, newCh) {
     } else if (newEndVnode == null) {
       newEndVnode = newCh[--newEndIdx];
     } else if (sameNode(oldStartVnode, newStartVnode)) { // 第一种 旧前和新前
+      console.log('第一种请款')
       patchVnode(oldStartVnode, newStartVnode)
       // 指针下移 并 更新指定的节点
       oldStartIdx++
@@ -46,14 +47,15 @@ export default function updateChildren(parentNode, oldCh, newCh) {
       oldStartVnode = oldCh[oldStartIdx]
       newStartVnode = newCh[newStartIdx]
     } else if (sameNode(oldEndVnode, newEndVnode)) { // 第二种 旧后和新后
-      patchVnode(oldStartVnode, newStartVnode)
+      console.log('第二种请款')
+      patchVnode(oldEndVnode, newEndVnode)
       // 指针上移 并 更新指定的节点
-      oldStartIdx--
-      newStartIdx--
-      oldStartVnode = oldCh[oldStartIdx]
-      newStartVnode = newCh[newStartIdx]
+      oldEndIdx--
+      newEndIdx--
+      oldEndVnode = oldCh[oldEndIdx]
+      newEndVnode = newCh[newEndIdx]
     } else if (sameNode(oldStartVnode, newEndVnode)) { // 第三种，旧前和新后
-      // console.log('第三种情况', oldStartVnode, newEndVnode)
+      console.log('第三种情况')
       patchVnode(oldStartVnode, newEndVnode)
       // 将旧前节点移动到旧后之后
       parentNode.insertBefore(oldStartVnode.elm, oldEndVnode.elm.nextSibling)
@@ -63,6 +65,7 @@ export default function updateChildren(parentNode, oldCh, newCh) {
       newEndVnode = newCh[newEndIdx]
 
     } else if (sameNode(oldEndVnode, newStartVnode)) { // 第四种，旧后和新前
+      console.log('第四种请款')
       patchVnode(oldEndVnode, newStartVnode)
       // 将旧后节点移动到旧前之前
       parentNode.insertBefore(oldEndVnode.elm, oldStartVnode.elm)
@@ -102,6 +105,7 @@ export default function updateChildren(parentNode, oldCh, newCh) {
     if (newStartIdx <= newEndIdx) {
       let before = newCh[newEndIdx + 1] == null ? null : newCh[newEndIdx + 1].elm
       for (let i = newStartIdx; i <= newEndIdx; i++) {
+        if (before === undefined) { before = null }
         parentNode.insertBefore(createElement(newCh[i]), before)
       }
     } else {
